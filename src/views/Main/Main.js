@@ -29,7 +29,6 @@ export default function Main() {
   const filterCountries = () => {
     const filtered = countries.filter((country) => country.continent === continent || continent === 'All');
     const sorted = filtered.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-    console.log(sorted);
     return sorted;
   };
   

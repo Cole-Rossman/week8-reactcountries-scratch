@@ -39,7 +39,7 @@ export default function Main() {
     <>
       <p className='error'>{errorMessage}</p>
       <Filter options={options} callback={setContinent} />
-      <div className='main'>
+      <div className='countries-list'>
         {filterCountries().map((country) => (
           <CountryCard key={country.name} {...country} />
         ))}

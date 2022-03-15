@@ -33,7 +33,7 @@ export default function Main() {
     return sorted;
   };
   
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <span className="loader"></span>;
   
   return (
     <>

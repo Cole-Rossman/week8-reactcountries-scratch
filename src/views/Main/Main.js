@@ -11,7 +11,7 @@ export default function Main() {
   const [loading, setLoading] = useState(true);
   const [continent, setContinent] = useState('All');
 
-  const options = ['All', ...continent];
+  const options = ['All', 'North America', 'South America', 'Europe', 'Africa', 'Asia', 'Oceania', 'Antarctica'];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,17 +27,22 @@ export default function Main() {
   }, []);
 
   const filterCountries = () => {
-    return countries.filter((country) => country.continent === continent || continent === 'All');
+    const filtered = countries.filter((country) => country.continent === continent || continent === 'All');
+    const sorted = filtered.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+    console.log(sorted);
+    return sorted;
   };
-
+  
   if (loading) return <div>Loading...</div>;
   
   return (
     <>
       <p className='error'>{errorMessage}</p>
-      
+      <Filter options={options} callback={setContinent} />
       <div className='main'>
-
+        {filterCountries().map((country) => (
+          <CountryCard key={country.name} {...country} />
+        ))}
       </div>
     </>
   );

@@ -1,0 +1,10 @@
+header {
+    color: burlywood;
+    height: 40px;
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    font-size: x-large;
+}

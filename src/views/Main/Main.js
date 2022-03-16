@@ -18,7 +18,12 @@ export default function Main() {
       try {
         const resp = await fetchCountries();
         setCountries(resp);
-        setLoading(false);
+        const timer = setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+        return () => {
+          clearTimeout(timer);
+        };
       } catch (e) {
         setErrorMessage('An error has ocurred. Please refresh the page.');
       }
@@ -33,6 +38,7 @@ export default function Main() {
   };
   
   if (loading) return <span className="loader"></span>;
+  
   
   return (
     <>
